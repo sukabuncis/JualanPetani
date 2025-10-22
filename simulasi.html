@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JualanPetani</title>
+  <link rel="stylesheet" href="styleSimulasi.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/vegetarian-food.png" alt="logo">
+        <h1>JUALANPETANI</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#tentang">Tentang</a></li>
+          <li><a href="harga.html">Harga Hari Ini</a></li>
+          <li><a class="active" href="simulasi.html">Simulasi Pembelian</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- KONTEN -->
+  <section class="simulasi">
+    <h2>Simulasi Perhitungan Pembelian</h2>
+    <p>Pilih produk dan masukkan jumlah pembelian untuk melihat total dan diskon otomatis.</p>
+
+    <div class="simulasi-box">
+      <div class="input-area">
+        <label>Nama Produk</label>
+        <select id="produk" onchange="setHarga()">
+          <option value="">-- Pilih Sayur --</option>
+          <option value="Beras">Beras</option>
+          <option value="Bawang Merah">Bawang Merah</option>
+          <option value="Cabai Keriting">Cabai Merah Keriting</option>
+          <option value="Bawang Putih">Bawang Putih</option>
+          <option value="Sawi">Sawi</option>
+          <option value="Bayam">Bayam</option>
+          <option value="Buncis">Buncis</option>
+          <option value="Cabai Rawit">Cabai Rawit</option>
+          <option value="Wortel">Wortel</option>
+          <option value="Tomat">Tomat</option>
+        </select>
+
+        <label>Harga per Kg (Rp)</label>
+        <input type="number" id="harga" readonly>
+
+        <label>Jumlah Beli (Kg)</label>
+        <input type="number" id="jumlah" placeholder="contoh: 10">
+
+        <button onclick="hitung()">Hitung Sekarang</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="hasil" id="hasil">
+        <p>Hasil perhitungan akan tampil di sini.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Jualan Petani by Budi Utomo</p>
+  </footer>
+
+  <script>
+    const hargaProduk = {
+      "Beras": 8000,
+      "Bawang Merah": 20000,
+      "Cabai Keriting": 21000,
+      "Bawang Putih": 24000,
+      "Sawi": 7500,
+      "Bayam": 6000,
+      "Buncis": 12000,
+      "Cabai Rawit": 37000,
+      "Wortel": 10000,
+      "Tomat": 8500
+    };
+
+    function setHarga() {
+      const produk = document.getElementById("produk").value;
+      document.getElementById("harga").value = produk ? hargaProduk[produk] : "";
+    }
+
+    function hitung() {
+      const produk = document.getElementById("produk").value;
+      const harga = Number(document.getElementById("harga").value);
+      const jumlah = Number(document.getElementById("jumlah").value);
+
+      if (!produk || !harga || !jumlah) {
+        document.getElementById("hasil").innerHTML = "<p>Lengkapi produk dan jumlah terlebih dahulu!</p>";
+        return;
+      }
+
+      const totalAwal = harga * jumlah;
+      let diskonPersen = 0;
+
+      if (jumlah >= 50) diskonPersen = 15;
+      else if (jumlah >= 20) diskonPersen = 10;
+      else if (jumlah >= 10) diskonPersen = 5;
+
+      const diskon = (diskonPersen / 100) * totalAwal;
+      const totalAkhir = totalAwal - diskon;
+
+      document.getElementById("hasil").innerHTML = `
+        <h3>Hasil Simulasi Pembelian</h3>
+        <p><strong>Produk:</strong> ${produk}</p>
+        <p><strong>Harga per Kg:</strong> Rp ${harga.toLocaleString()}</p>
+        <p><strong>Jumlah:</strong> ${jumlah} Kg</p>
+        <hr>
+        <p><strong>Total Awal:</strong> Rp ${totalAwal.toLocaleString()}</p>
+        <p><strong>Diskon:</strong> ${diskonPersen}% (Rp ${diskon.toLocaleString()})</p>
+        <p><strong>Total Akhir:</strong> <span class="total">Rp ${totalAkhir.toLocaleString()}</span></p>
+      `;
+    }
+  </script>
+</body>
+</html>

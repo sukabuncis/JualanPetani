@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JualanPetani</title>
+  <link rel="stylesheet" href="styleIndex.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header id="navbar">
+    <div class="container">
+      <div class="logo">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/vegetarian-food.png" alt="logo">
+        <h1>JUALANPETANI</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#tentang">Tentang</a></li>
+          <li><a href="harga.html">Harga Hari Ini</a></li>
+          <li><a href="simulasi.html">Simulasi Pembelian</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <p class="tagline">Jualan Petani Indonesia</p>
+      <h1><span>Petani Sejahtera</span><br>Panen Melimpah</h1>
+      <div class="buttons">
+        <a href="harga.html" class="btn btn-price"><i class="fas fa-search"></i> CEK HARGA HARI INI</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tentang Section -->
+  <section id="tentang" class="tentang">
+    <h2>Selamat Datang di Jualan Petani</h2>
+    <p>
+      JualanPetani hadir sebagai solusi bagi petani lokal untuk memperluas jangkauan pasar secara digital.
+      Melalui sistem yang terintegrasi, hasil panen dapat dipasarkan langsung tanpa perantara, sehingga petani
+      memperoleh keuntungan lebih adil dan konsumen mendapat produk segar dengan harga terjangkau.
+    </p>
+    <p>
+      Kami mendukung ekosistem pertanian berkelanjutan dengan teknologi yang mempermudah pencatatan stok,
+      pemantauan harga, serta pengiriman hasil panen. Dengan demikian, setiap transaksi menjadi lebih efisien,
+      transparan, dan menguntungkan semua pihak.
+    </p>
+    <p>
+      Bersama JualanPetani, mari wujudkan pertanian Indonesia yang modern, berdaya saing, dan mensejahterakan.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Copyright © 2025 Jualan Petani by Budi Utomo</p>
+  </footer>
+
+  <script>
+    // Efek navbar solid saat di-scroll
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
+
+</body>
+</html>
